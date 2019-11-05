@@ -4,14 +4,16 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 bodyParser = require('body-parser');
+var fileupload = require ('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var listeRouter = require('./routes/liste');
 
+
 var app = express();
 
 
-
+app.use(fileupload());
 app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
