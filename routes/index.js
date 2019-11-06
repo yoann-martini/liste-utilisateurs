@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 router.post('/add', function(req, res){
 
 console.log(req);
- var monUtilisateur = new utilisateur({ nom : req.body.nom,  prenom : req.body.prenom , genre : req.body.genre , choisi : 0, datechoisi : null, photo : req.files.photo.name, domaine : req.body.domaine, dob : req.body.dob, ville : req.body.ville });
+ var monUtilisateur = new utilisateur({ nom : req.body.nom,  prenom : req.body.prenom , genre : req.body.genre , choisi : 0, photo : req.files.photo.name, domaine : req.body.domaine, dob : req.body.dob, ville : req.body.ville });
 
 
  monUtilisateur.save(function (err) {
