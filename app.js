@@ -12,6 +12,10 @@ var listeRouter = require('./routes/liste');
 
 var app = express();
 
+var hbs = require('hbs');
+
+// register path to partials
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.use(fileupload());
 app.use(bodyParser());
@@ -31,6 +35,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/', listeRouter);
+app.use('/uploads', express.static(__dirname + '/uploads'));
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -8,7 +8,7 @@ router.get('/liste', function(req, res, next) {
 utilisateur.find(null, function (err, users) {
     if (err) { throw err; }
     // comms est un tableau de hash
-    res.render('liste', { title : 'express', utilisateurs : users }); 
+    res.render('liste', { title : 'Liste utilisateurs', utilisateurs : users }); 
   });
 
  

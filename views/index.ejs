@@ -6,13 +6,12 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+    <h1 class="text-center mb-5"><%= title %></h1>
 
 
+    <% include partials/nav.hbs %>
+
   
-  
-     
 
 
     
@@ -22,7 +21,7 @@
 
 
 <div class="border border-success justify-content-center">
-    <form action="/add" method="POST" class=" col-3 text-center m-auto pt-5 pb-5">
+    <form action="/add" method="POST" class=" col-3 text-center m-auto pt-5 pb-5"  encType="multipart/form-data">
       <div class="form-group">
         <label for="nom">Nom</label>
         <input type="text" class="form-control" id="nom" name="nom">
