@@ -4,21 +4,21 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 bodyParser = require('body-parser');
-var fileupload = require ('express-fileupload');
+var fileUpload = require ('express-fileupload');
 
 var indexRouter = require('./routes/index');
 var listeRouter = require('./routes/liste');
 var visiteurRouter = require('./routes/visiteur');
-
-
 var app = express();
+
+
+app.use(fileUpload());
 
 var hbs = require('hbs');
 
 // register path to partials
 hbs.registerPartials(__dirname + '/views/partials');
 
-app.use(fileupload());
 app.use(bodyParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
