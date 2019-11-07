@@ -1,18 +1,12 @@
 var express = require('express');
 var router = express.Router();
-var utilisateur = require('../models/utilisateurModel');
+var listeController = require ('../controller/listeController');
 
 
 /* GET home page. */
-router.get('/liste', function(req, res, next) {
-utilisateur.find(null, function (err, users) {
-    if (err) { throw err; }
-    // comms est un tableau de hash
-    res.render('liste', { title : 'Liste utilisateurs', utilisateurs : users }); 
-  });
+router.get('/liste',listeController.liste);
 
- 
-});
+
 
 
 module.exports = router;

@@ -4,25 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel='stylesheet' href='/stylesheets/style.css' />
 </head>
-<body>
-        <div class="row">
+<body >
+        <h1 class="text-center mb-5"><%= title %></h1>
 
-                <table class="table table-striped">
-                        <thead>
-                            <tr>
-                                <th scope="col">Nom</th>
-                                <th scope="col">Prénom</th>
-                                <th scope="col">Genre</th>
-                                <th scope="col">Photo</th>
-                                <th scope="col">Domaine</th>
-                                <th scope="col">Dob</th>
-                                <th scope="col">Ville</th>
-                                <th scope="col">Date de sélection</th>
-                            </tr>
-                        </thead>
-                        <tbody>
+
+        <% include partials/nav.hbs %>
+        <div class="container-fluid border border-success p-4">
+
+      
                          
             
                       
@@ -30,21 +23,31 @@
             
             
                             <% for(let i =0; i<utilisateurs.length; i++){ %>
-                                <img src='../uploads/<%= utilisateurs[i].photo%>'>
-                                    <tr>
-                                    <td><%= utilisateurs[i].nom%></td>
-                                    <td><%= utilisateurs[i].prenom%></td>
-                                    <td><%= utilisateurs[i].genre%></td>
-                                    <td><%= utilisateurs[i].photo%></td>
-                                    <td><%= utilisateurs[i].domaine%></td>
-                                    <td><%= utilisateurs[i].dob%></td>
-                                    <td><%= utilisateurs[i].ville%></td>
-                                    <td><%= utilisateurs[i].datechoisi%></td>
+
+
+
+                                <div class="card p-3 m-auto text-center" style="width: 18rem;">
+                                    <img src="../uploads/<%= utilisateurs[i].photo%>" class="card-img-top " alt="...">
+                                    <div class="card-body">
+                                      <h5 class="card-title"><%= utilisateurs[i].nom%> <%= utilisateurs[i].prenom%> (<%= utilisateurs[i].genre%>)</h5>
                                     
-                                    
+                                    </div>
+                                    <ul class="list-group list-group-flush">
+                                      <li class="list-group-item">Date de naissance :<br /> <br /><%= utilisateurs[i].dob%></li>
+                                      <li class="list-group-item">Domaine :<br /> <br /><%= utilisateurs[i].domaine%></li>
+                                      <li class="list-group-item">Ville :<br /> <br /><%= utilisateurs[i].ville%></li>
+                                    </ul>
                                    
-                                   
-                                </tr>
+                                  </div>
+
+
+
+
+
+                               <!-- <img src='../uploads/<%= utilisateurs[i].photo%>'>-->
+                             
+                                    <!-- utilisateurs[i].datechoisi%></td>-->
+                                
                                   <% } %>
                          
                       

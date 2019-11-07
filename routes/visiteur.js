@@ -20,17 +20,61 @@ router.get('/visiteur', function(req, res, next) {
 
     utilisateur.aggregate([{$sample:{size:1}}],(err, users)=> {
         if (err) { throw err; }
-        // comms est un tableau de hash
-     /* a modif
+       
+            var date = Date.now();
+            console.log(date);
+
+       /* console.log(users[0]._id);
+        console.log(date);*/
+
+/*utilisateur.findOneAndUpdate({_id:users[0]._id},{datechoisi:date[0]});*/
+
+           var findAndUpdate = function(users, done) {
+     
+          
+           utilisateur.findOneAndUpdate(
+              {_id: users[0]._id},
+              {datechoisi: date},
+              {new: true},
+              (err, data) => {
+                if (err) return done(err, data);
+                console.log(data);
+                return done(null, data);
+              }
+            );
+          };
+findAndUpdate(users, function (data){return data});
+
+
+        
+        /*await utilisateur.create({_id: users[0]._id });
+
+        const filter = {_id: users[0]._id };
         var date = Date.now();
-        date = "08/09/1981";
+        const update = { datechoisi: date };
+        
+        // `doc` is the document _before_ `update` was applied
+        let doc = await utilisateur.findOneAndUpdate(filter, update);
+        doc._id; // 'Jean-Luc Picard'
+        doc.datechoisi; // undefined
+        
+        doc = await utilisateur.findOne(filter);
+        doc.datechoisi; // 59*/
 
-        console.log(users[0]._id);
-        console.log(date);
-        utilisateur.findOneAndUpdate({_id:users[0]._id},{datechoisi:date});*/
+
+        
 
 
-        res.render('visiteur', { title : 'Liste utilisateurs', utilisateurs : users }); 
+     
+
+
+
+     
+
+
+
+
+        res.render('visiteur', { title : 'Utilisateur random', utilisateurs : users }); 
       });
 
 
