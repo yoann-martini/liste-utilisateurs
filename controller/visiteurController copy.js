@@ -1,15 +1,16 @@
 var utilisateur = require('../models/utilisateurModel');
 var controller={}
 
+controller.display = (req,res) =>{
+  res.render('visiteur', { title : 'Liste utilisateurs', utilisateurs : users }); 
+});
+
+}
+
+
 
 controller.random = (req,res) =>{
 
-/*si ( datechoisi==aujourd'hui ){
-afficher cette entrée
-}sinon si(tout le monde choisi (0 false du champ choisi)){
-  remettre tout les choisis a zero et random
-}sinon { random sur tous ceux qui ne sont pas choisi
-}*/
 utilisateur.aggregate([{$sample:{size:1}}],(err, users)=> {
         if (err) { throw err; }
        
@@ -34,3 +35,10 @@ findAndUpdate(users, function (data){return data});
 }
 
 module.exports = controller;
+
+/*si ( datechoisi==aujourd'hui ){
+afficher cette entrée
+}sinon si(tout le monde choisi (0 false du champ choisi)){
+  remettre tout les choisis a zero et random
+}sinon { random sur tous ceux qui ne sont pas choisi
+}*/
